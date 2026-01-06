@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - SmartGrievance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+<p class="subtitle">Department-wise Grievance Management</p>
+
+<div id="container"></div>
+
+<script>
+fetch("http://localhost:8080/api/grievance/all")
+.then(res => res.json())
+.then(data => {
+
+    const grouped = {};
+
+    // Group by department
+    data.forEach(g => {
+        if (!grouped[g.department]) {
+            grouped[g.department] = [];
+        }
+        grouped[g.department].push(g);
+    });
+
+    const container = document.getElementById("container");
+
+    for (let dept in grouped) {
+
+        let html = `
+        <div class="card">
+            <h2>${dept}</h2>
+            <table width="100%" border="1" cellpadding="6">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Urgency</th>
+                    <th>Status</th>
+                    <th>Reminder</th>
+                    <th>Action</th>
+                </tr>`;
+
+        grouped[dept].forEach(g => {
+
+            html += `
+            <tr>
+                <td>${g.id}</td>
+                <td>${g.title}</td>
+                <td class="${g.urgency === 'HIGH' ? 'high' : ''}">
+                    ${g.urgency}
+                </td>
+                <td>
+                    ${g.status === 'RESOLVED'
+                        ? "<span class='resolved'>✔ RESOLVED</span>"
+                        : "<span class='pending'>PENDING</span>"
+                    }
+                </td>
+                <td>
+                    ${g.reminderSent
+                        ? "<span class='reminder'>⏰ Reminder Sent</span>"
+                        : "<span class='ok'>Normal</span>"
+                    }
+                </td>
+                <td>
+                    ${g.status === 'RESOLVED'
+                        ? "-"
+                        : `<button onclick="resolveGrievance(${g.id})">
+                              Mark Resolved
+                           </button>`
+                    }
+                </td>
+            </tr>`;
+        });
+
+        html += `</table></div>`;
+        container.innerHTML += html;
+    }
+});
+
+// ADMIN ACTION FUNCTION
+function resolveGrievance(id) {
+    fetch(`http://localhost:8080/api/grievance/resolve/${id}`, {
+        method: "PUT"
+    })
+    .then(() => {
+        alert("Grievance marked as RESOLVED");
+        location.reload();
+    });
+}
+</script>
+
+</body>
+</html>

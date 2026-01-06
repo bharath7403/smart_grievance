@@ -1,0 +1,132 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f2f4f7;
+    margin: 0;
+    padding: 30px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #111;
+}
+
+.subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    width: 420px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    color: #222;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+    height: 90px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #333;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.pending {
+    color: #b91c1c;
+    font-weight: bold;
+}
+
+.resolved {
+    color: green;
+    font-weight: bold;
+}
+
+.reminder {
+    color: #b45309;
+    font-weight: bold;
+}
+
+.ok {
+    color: green;
+}
+
+.high {
+    color: red;
+    font-weight: bold;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .card {
+        width: 100%;
+        margin: 15px auto;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    input, textarea, button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+    }
+
+    textarea {
+        height: 80px;
+    }
+}

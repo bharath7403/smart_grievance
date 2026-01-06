@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartGrievance AI</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h1>SmartGrievance AI</h1>
+<p class="subtitle">AI Powered Government Grievance Management System</p>
+
+<div class="card">
+    <h2>Submit Grievance</h2>
+
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="email" id="email" placeholder="Your Email">
+    <input type="text" id="title" placeholder="Grievance Title">
+    <textarea id="description" placeholder="Describe your grievance"></textarea>
+
+    <button onclick="submitGrievance()">Submit</button>
+
+    <p id="response"></p>
+</div>
+
+<div class="card">
+    <h2>Check Grievance Status</h2>
+
+    <input type="number" id="gid" placeholder="Enter Grievance ID">
+    <button onclick="checkStatus()">Check Status</button>
+
+    <p id="statusResult"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
