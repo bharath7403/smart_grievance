@@ -7,7 +7,9 @@ function submitGrievance() {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
         title: document.getElementById("title").value,
-        description: document.getElementById("description").value
+        description: document.getElementById("description").value,
+        department: document.getElementById("department").value,
+        urgency: document.getElementById("urgency").value
     };
 
     fetch(`${BASE_URL}/api/grievance/submit`, {
@@ -20,29 +22,29 @@ function submitGrievance() {
     .then(res => res.json())
     .then(data => {
         document.getElementById("response").innerText =
-            "Grievance submitted successfully. ID: " + data.id;
+            "✅ Grievance submitted successfully. Your ID is: " + data.id;
     })
-    .catch(() => alert("Backend not reachable"));
+    .catch(() => alert("❌ Backend not reachable"));
 }
 
-// CHECK STATUS
+// ✅ CHECK STATUS BY ID
 function checkStatus() {
 
-    const gid = document.getElementById("gid").value;
+    const id = document.getElementById("gid").value;
 
-    fetch(`${BASE_URL}/api/grievance/${gid}`)
-    .then(res => {
-        if (!res.ok) throw new Error();
-        return res.json();
-    })
-    .then(g => {
-        document.getElementById("statusResult").innerText =
-            `Status: ${g.status}
+    fetch(`${BASE_URL}/api/grievance/${id}`)
+        .then(res => {
+            if (!res.ok) throw new Error();
+            return res.json();
+        })
+        .then(g => {
+            document.getElementById("statusResult").innerText =
+                `Status: ${g.status}
 Department: ${g.department}
 Urgency: ${g.urgency}`;
-    })
-    .catch(() => {
-        document.getElementById("statusResult").innerText =
-            "❌ Invalid Grievance ID or backend unreachable";
-    });
+        })
+        .catch(() => {
+            document.getElementById("statusResult").innerText =
+                "❌ Invalid Grievance ID or backend unreachable";
+        });
 }
