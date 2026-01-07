@@ -1,5 +1,4 @@
-const BASE_URL = "https://glandless-unhaggled-sharonda.ngrok-free.dev";
-
+const BASE_URL = "https://glandless-unhaggled-sharonda.ngrok-free.dev"; 
 // SUBMIT GRIEVANCE
 function submitGrievance() {
 
