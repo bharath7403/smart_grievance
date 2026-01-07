@@ -30,15 +30,19 @@ function checkStatus() {
 
     const gid = document.getElementById("gid").value;
 
-    fetch(`${BASE_URL}/api/grievance/all`)
-    .then(res => res.json())
-    .then(data => {
-
-        const g = data.find(x => x.id == gid);
-
-        document.getElementById("statusResult").innerText = g
-            ? `Status: ${g.status}\nDepartment: ${g.department}\nUrgency: ${g.urgency}`
-            : "Invalid Grievance ID";
+    fetch(`${BASE_URL}/api/grievance/${gid}`)
+    .then(res => {
+        if (!res.ok) throw new Error();
+        return res.json();
     })
-    .catch(() => alert("Backend not reachable"));
+    .then(g => {
+        document.getElementById("statusResult").innerText =
+            `Status: ${g.status}
+Department: ${g.department}
+Urgency: ${g.urgency}`;
+    })
+    .catch(() => {
+        document.getElementById("statusResult").innerText =
+            "❌ Invalid Grievance ID or backend unreachable";
+    });
 }
