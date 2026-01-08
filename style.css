@@ -130,3 +130,22 @@ p {
         height: 80px;
     }
 }
+
+/* Status highlighting */
+.status {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.status-resolved {
+    color: green;
+}
+
+.status-pending {
+    color: orange;
+}
+
+.status-submitted {
+    color: red;
+}

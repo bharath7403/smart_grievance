@@ -3,37 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>SmartGrievance AI</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Mobile responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>SmartGrievance AI</h1>
-<p class="subtitle">AI Powered Government Grievance Management System</p>
+    <h1>SmartGrievance AI</h1>
+    <p class="subtitle">
+        AI Powered Government Grievance Management System
+    </p>
 
-<div class="card">
-    <h2>Submit Grievance</h2>
+    <!-- SUBMIT GRIEVANCE CARD -->
+    <div class="card">
+        <h2>Submit Grievance</h2>
 
-    <input type="text" id="name" placeholder="Your Name">
-    <input type="email" id="email" placeholder="Your Email">
-    <input type="text" id="title" placeholder="Grievance Title">
-    <textarea id="description" placeholder="Describe your grievance"></textarea>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="text" id="title" placeholder="Grievance Title" required>
+        <textarea id="description" placeholder="Describe your grievance" required></textarea>
 
-    <button onclick="submitGrievance()">Submit</button>
+        <button onclick="submitGrievance()">Submit</button>
 
-    <p id="response"></p>
-</div>
+        <!-- Response message -->
+        <p id="response" class="response"></p>
+    </div>
 
-<div class="card">
-    <h2>Check Grievance Status</h2>
+    <!-- CHECK STATUS CARD -->
+    <div class="card">
+        <h2>Check Grievance Status</h2>
 
-    <input type="number" id="gid" placeholder="Enter Grievance ID">
-    <button onclick="checkStatus()">Check Status</button>
+        <input type="number" id="gid" placeholder="Enter Grievance ID" required>
+        <button onclick="checkStatus()">Check Status</button>
 
-    <p id="statusResult"></p>
-</div>
+        <!-- Status result -->
+        <p id="statusResult" class="status"></p>
+    </div>
 
-<script src="script_v2.js"></script>
+    <!-- JS -->
+    <script src="script.js"></script>
 
 </body>
 </html>
