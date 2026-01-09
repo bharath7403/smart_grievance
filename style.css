@@ -149,3 +149,78 @@ p {
 .status-submitted {
     color: red;
 }
+
+/* ================= ADMIN TABLE FIX ================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;   /* 🔥 removes double borders */
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+th, td {
+    border: 1px solid #d1d5db;
+    padding: 10px 8px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    background: #f9fafb;
+    font-weight: 600;
+    color: #111;
+}
+
+td {
+    background: #fff;
+}
+
+/* Fix action button alignment */
+td button {
+    width: auto;
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+/* Status colors inside table */
+td .pending {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+td .resolved {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+td .high {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+/* Card width fix for admin view */
+.card.admin {
+    width: 95%;
+    max-width: 900px;
+}
+
+/* Responsive table (mobile) */
+@media (max-width: 768px) {
+
+    table {
+        font-size: 13px;
+    }
+
+    th, td {
+        padding: 8px 6px;
+    }
+
+    td button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
